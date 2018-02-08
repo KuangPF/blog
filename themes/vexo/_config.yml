@@ -1,0 +1,54 @@
+author: kuangpengfei # 作者
+description: bolg
+keyword: vuejs
+favicon: 
+title: vue
+
+excerpt_link: Read more
+
+menu:
+ Home: /
+ Tags: /tags/
+ Archives: /archives/
+ Projects: /project/
+ About: /about/
+
+# highlight
+highlight:
+  tomorrow
+
+# catalog
+catalog: true
+
+# donate
+donate: false
+
+# qrcode
+qrcode: true
+
+# comment
+# you can set gitment or uyan
+
+comment: gitment
+
+# gitment config
+gitment_owner: KuangPF
+gitment_repo: kuangpf.github.io
+gitment_oauth_id: 72ec19c8755051b9ea41
+gitment_oauth_secret: 121a93a9d53127e8befc17917059212c2a82ef0c
+
+# uyan
+# if you want to use uyan as your blog comment, plz remove/comment out gitment config
+
+baidu_id: 
+
+about: 
+  banner: http://file.muyutech.com/about.jpg
+  avatar: https://avatars2.githubusercontent.com/u/20694238?s=460&v=4
+  description: 人生不只有眼前的苟且，还有诗和远方.
+  # Links
+  weibo_username: kunagpf
+  facebook_username: kuangpf
+  github_username: KuangPF
+  zhihu_username: KuangPF
+  mail_username: cgi-bin/qm_share?t=qm_mailme&email=qpucmZmZk52Ykpzq29uEycXH

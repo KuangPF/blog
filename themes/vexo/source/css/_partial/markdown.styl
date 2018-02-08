@@ -1,0 +1,129 @@
+.markdown-content, .article-summary
+  text-align: justify
+  word-break: break-all
+  pre, code
+    font-family: 'Roboto Mono', Monaco, courier, monospace
+    font-size: 13px
+    @media m-mobile
+      font-size: 12px
+    .line
+      min-height: 13px
+      margin: 2px 0
+  p
+    line-height: 1.6em
+    code
+      background-color: color-background
+      color: color-orange
+      padding: 3px 5px
+      margin: 0 2px
+      border-radius: 2px
+      white-space: nowrap
+  h1
+    font-size: 1.8em
+  h2
+    font-size: 1.5em
+  h3
+    margin: 1em 0
+    font-size: 1.3em
+    padding-bottom: .3em
+    border-bottom: 1px solid color-border
+  h4
+    margin: 1em 0
+    font-size: 1.2em
+    &:before
+      content: "#";
+      color: color-primary
+      margin-right: 5px
+      font-size: 1.2em
+      font-weight: 700
+  h5
+    font-size: 1em
+    margin: .8em 0
+  blockquote
+    margin: 1em 0
+    padding: 15px 20px
+    border-left: 4px solid color-primary
+    background: color-background
+    border-bottom-right-radius: 2px
+    border-top-right-radius: 2px
+  ul, ol
+    overflow: auto
+    margin: 15px 0
+    li
+      padding: 5px 0
+  img
+    max-width: 100%
+    display: block
+    margin: 20px auto
+    cursor: zoom-in
+  figure
+    background: color-background
+    padding: 0 10px
+    border-radius: 2px
+    margin: 10px 0
+    overflow: auto
+    position: relative
+    &:after
+      content: attr(data-lang)
+      position: absolute
+      top: 0
+      right: 0
+      color: #ccc
+      text-align: right
+      font-size: 0.7em
+      padding: 5px 10px 0
+      line-height: 15px
+      height: 15px
+      font-weight: 500
+  > table
+    width: 100%
+    thead
+      background-color: color-primary
+      border-top-width: 1px
+      border-top-style: solid
+      border-top-color: color-border
+      th
+        padding: 5px 10px
+        color: color-white
+    tbody
+      tr
+        &:nth-child(even)
+          background: #e6eed6
+        &:nth-child(odd)
+          background: color-white
+        td
+          padding: 5px 10px
+  hr
+    border: none
+    border-bottom: 1px dashed color-border
+    margin: 30px 0
+	.tip
+		padding: 12px 24px 12px 30px
+		margin: 2em 0
+		border-left: 4px solid  #f66
+		background-color: #f8f8f8
+		position: relative
+		border-bottom-right-radius: 2px
+		border-top-right-radius: 2px
+		text-align: justify
+		z-index: 4;
+		&:before
+			content: "!"
+			background-color: #f66
+			position: absolute
+			top: 14px
+			left: -12px
+			color: #fff
+			width: 20px
+			height: 20px
+			border-radius: 100%
+			text-align: center
+			line-height: 20px
+			font-weight: bold
+			font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif
+			font-size: 14px
+			z-index: 200;
+
+/* 去掉代码行号 */
+.gutter
+    display: none
