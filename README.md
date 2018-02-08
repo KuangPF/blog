@@ -4,7 +4,7 @@
 > github + hexo + vue
 
 ### 主页
-[kuangpf.github.io](https://kuangpf.github.io/blog)
+[kuangpf.github.io/blog](https://kuangpf.github.io/blog)
 
 ### 前言
 当你接触到更多的技术，更加优雅的代码写法，更加有趣的代码demo。你总会有个想法，将他记录下来，告诉自己以后来看(其实都懂，再也不会来看:innocent::innocent:)，然后我们骗了自己一次又一次。其实可以写成博客，从而不骗自己，至少在写博客的时候没有骗自己。
