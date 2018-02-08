@@ -33,9 +33,9 @@ comment: gitment
 
 # gitment config
 gitment_owner: KuangPF
-gitment_repo: kuangpf.github.io
-gitment_oauth_id: 72ec19c8755051b9ea41
-gitment_oauth_secret: 121a93a9d53127e8befc17917059212c2a82ef0c
+gitment_repo: bolg
+gitment_oauth_id: c3e4aa2ce93f644ca3dc
+gitment_oauth_secret: 5354b1e59a5cf69b941879c458dd759640823a17
 
 # uyan
 # if you want to use uyan as your blog comment, plz remove/comment out gitment config
