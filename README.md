@@ -1,7 +1,7 @@
 ## Font-End-Blog
 > 前端博客，在于记录平时开发中技术，体会，总结。
 
-> github + hexo + vue
+> github + hexo + vueUI
 
 ### 主页
 [kuangpf.github.io/blog](https://kuangpf.github.io/blog)
