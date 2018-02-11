@@ -79,4 +79,4 @@ deploy:
   type: git
   repo: https://github.com/KuangPF/blog.git
   branch: master
-  message: 'comment'
+  message: 'type 类型判断'
