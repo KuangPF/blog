@@ -79,4 +79,4 @@ deploy:
   type: git
   repo: https://github.com/KuangPF/blog.git
   branch: master
-  message: 'remove gitment ==> 422 Unprocessable Entity'
+  message: 'update'
