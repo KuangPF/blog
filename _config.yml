@@ -80,4 +80,4 @@ deploy:
   type: git
   repo: https://github.com/KuangPF/blog.git
   branch: master
-  message: 'update title'
+  message: 'vue logoTitle'
