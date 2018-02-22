@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: vue
+title: KuangPF🖖blog
 subtitle: blog
 description: 
 author: kuangpengfei
@@ -79,4 +79,4 @@ deploy:
   type: git
   repo: https://github.com/KuangPF/blog.git
   branch: master
-  message: 'update'
+  message: 'update title'
