@@ -30,7 +30,7 @@ qrcode: true
 # you can set gitment or uyan
 
 
-comment: gitment
+# comment: gitment
 
 # gitment config
 gitment_owner: KuangPF
