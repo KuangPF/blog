@@ -80,4 +80,4 @@ deploy:
   type: git
   repo: git@github.com:KuangPF/blog.git
   branch: master
-  message: 'javascript 面向对象'
+  message: '对象属性'

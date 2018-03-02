@@ -12,4 +12,5 @@ summary: 这是一个 javascript 面向对象的程序设计系列的文章，�
 ### 目录
 
 1. [javascript 面向对象的程序设计(一)=====》理解对象](https://kuangpf.github.io/blog/2018/03/02/javascript-understand-object/)
+2. [javascript 面向对象的程序设计(二)=====》对象属性](https://kuangpf.github.io/blog/2018/03/02/javascript-object-properties/)
 
