@@ -80,4 +80,4 @@ deploy:
   type: git
   repo: git@github.com:KuangPF/blog.git
   branch: master
-  message: 'vue-router'
+  message: 'javascript 面向对象'
