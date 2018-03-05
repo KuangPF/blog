@@ -1,5 +1,5 @@
 ---
-title: javascript 面向对象版块之理解对象
+title: 面向对象版块之理解对象
 date: 2018-03-02 11:24:10
 tags: [javascript,object]
 ---

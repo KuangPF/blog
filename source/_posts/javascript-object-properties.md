@@ -1,7 +1,7 @@
 ---
-title: javascript 面向对象版块之对象属性
+title: 面向对象版块之对象属性
 date: 2018-03-02 13:41:46
-tags: [Object-Oriented]
+tags: [javascript,Object-Oriented]
 ---
 
 这节主要讲解的是对象的属性，首先先创建一个对象:
