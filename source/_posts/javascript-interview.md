@@ -1,7 +1,8 @@
 ---
-title: javascript-interview
+title: javascript 面试题收集中...
 date: 2018-03-05 13:35:13
 tags: [javascript,interview]
+summary: 本片博客旨在收集一些 javascript 的面试问题，有些来自于网络社区，有些来自于自身经历，持续更新
 ---
 本片博客旨在收集一些 javascript 的面试问题，有些来自于网络社区，有些来自于自身经历，持续更新
 #### 1.交换两个变量的值
