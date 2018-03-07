@@ -2,7 +2,7 @@
 title: 面向对象版块之定义多个对象属性以及读取属性特性
 date: 2018-03-02 17:02:18
 tags: [javascript,Object-Oriented]
-summary: 这是 `javascript` 面向对象版块的第三篇文章，主要讲解的是多个属性的定义以及读取属性的特性。前面这几章内容目的在于加深对对象的理解，这样可以利于理解后面的原型链以及继承方面的知识，或者你也可以了解一下不一样的 `javascript` 对象的定义。
+summary: 这是 `javascript` 面向对象版块的第三篇文章，主要讲解的是多个属性的定义以及读取属性的特性。前面这几章内容目的在于加深对对象的理解，这样可以利于理解后面的原型链以及继承方面的知识，或者你也可以了解一下不一样的 `javascript` 对象属性的定义。
 ---
 
 这是 `javascript` 面向对象版块的第三篇文章，主要讲解的是多个属性的定义以及读取属性的特性。前面这几章内容目的在于加深对对象的理解，这样可以利于理解后面的原型链以及继承方面的知识，或者你也可以了解一下不一样的 `javascript` 对象的定义。
@@ -82,7 +82,7 @@ console.log(typeof descriptor3.set); // function
 对于数据属性 _year ， value 等于最初的值， configurable 是 false ，而 get 等于 undefined 。对于访问器属性 year ， value 等于 undefined ， enumerable 是 false ，而 get 是一个指向 getter 函数的指针。
 
 ### 小结
-这篇文章主要讲解了**定义多个属性**和**读取属性的特性**，分别使用了 `Object.defineProperties()` 和`Object.getOwnPropertyDescriptor`，了解了这种定义属性和读取属性的方法之后，相信对于对象会有更加深刻的理解。
+这篇文章主要讲解了**定义多个属性**和**读取属性的特性**，分别使用了 `Object.defineProperties()` 和`Object.getOwnPropertyDescriptor()`方法，了解了这种定义属性和读取属性的方法之后，相信你对于对象会有更加深刻地理解。
 
 
 上一篇：[javascript 面向对象版块之对象属性](https://kuangpf.github.io/blog/2018/03/02/javascript-object-properties/)

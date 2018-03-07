@@ -7,27 +7,35 @@
         <h3><%- config.author %></h3>
         <p class="discription"><%- theme.about.description %></p>
         <section class="share-icons">
-            <% if (theme.about.weibo_username) { %>
-            <a class="icon-weibo" href="http://weibo.com/<%- theme.about.weibo_username %>" target="_blank">
+						<% if (theme.about.github_username) { %>
+            <a class="icon-github" href="https://github.com/<%- theme.about.github_username %>" target="_blank">
+                <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+            <% } %>
+						<% if (theme.about.segmentfault_username) { %>
+            <a class="icon-sf" href="https://segmentfault.com/u/<%- theme.about.segmentfault_username %>" target="_blank">
+                <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-segmentfault fa-stack-1x fa-inverse">sf</i>
+                </span>
+            </a>
+            <% } %>
+            <% /* if (theme.about.weibo_username) { %>
+            <a class="icon-weibo" href="https://weibo.com/<%- theme.about.weibo_username %>" target="_blank">
                 <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
                 </span>
             </a>
-            <% } %>
+            <% } */ %>
             <% if (theme.about.facebook_username) { %>
             <a class="icon-facebook" href="https://facebook.com/<%- theme.about.facebook_username %>" target="_blank">
                 <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                </span>
-            </a>
-            <% } %>
-            <% if (theme.about.github_username) { %>
-            <a class="icon-github" href="https://github.com/<%- theme.about.github_username %>" target="_blank">
-                <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                 </span>
             </a>
             <% } %>
@@ -40,7 +48,7 @@
             </a>
             <% } %>
             <% if (theme.about.mail_username) { %>
-                <a class="icon-mail" href="http://mail.qq.com/<%- theme.about.douban_username %>" target="_blank">
+                <a class="icon-mail" href="https://mail.qq.com/<%- theme.about.douban_username %>" target="_blank">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
