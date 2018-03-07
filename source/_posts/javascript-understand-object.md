@@ -46,6 +46,7 @@ ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含�
 ### 小结
 在这篇文章中，介绍了什么是面向对象和面向过程，以及`javascript`中对象的含义。在下篇文章中将要介绍一些对象属性方面的知识。如果文章有错误还望各位大佬提出，一起节流学习。
 
+<br>
 下一篇: [javascript 面向对象版块之对象属性](https://kuangpf.github.io/blog/2018/03/02/javascript-object-properties/)
 上一篇: [javascript 面向对象的程序设计](https://kuangpf.github.io/blog/2018/03/02/javascript-object-oriented/)
 

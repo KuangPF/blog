@@ -84,7 +84,7 @@ console.log(typeof descriptor3.set); // function
 ### 小结
 这篇文章主要讲解了**定义多个属性**和**读取属性的特性**，分别使用了 `Object.defineProperties()` 和`Object.getOwnPropertyDescriptor()`方法，了解了这种定义属性和读取属性的方法之后，相信你对于对象会有更加深刻地理解。
 
-
+<br>
 上一篇：[javascript 面向对象版块之对象属性](https://kuangpf.github.io/blog/2018/03/02/javascript-object-properties/)
 
 下一篇：[javascript 面向对象版块之创建对象 ](https://kuangpf.github.io/blog/2018/03/06/javascript-object-create/)

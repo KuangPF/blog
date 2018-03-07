@@ -122,6 +122,7 @@ console.log(book.edition); // 2
 ### 小结
 本片博客主要介绍了两种属性：**数据属性**和**访问器属性**，介绍了这两种属性的定义以及这两种属性的特性，主要使用方法 Object.defineProperty()。其实这篇文章主要是加强对对象的理解。
 
+<br>
 上一篇：[javascript 面向对象版块之理解对象](https://kuangpf.github.io/blog/2018/03/02/javascript-understand-object/)
 
 下一篇：[javascript 面向对象版块之定义多个对象属性以及读取属性特性 ](https://kuangpf.github.io/blog/2018/03/02/javascript-understand-object-more/)

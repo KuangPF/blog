@@ -6,9 +6,13 @@
 ### 主页
 [kuangpf.github.io/blog](https://kuangpf.github.io/blog)
 
-![README-img1](https://github.com/KuangPF/blog/blob/blog/source/img/readme-img/readme1.png)
-![README-img2](https://github.com/KuangPF/blog/blob/blog/source/img/readme-img/readme2.png)
-![README-img3](https://github.com/KuangPF/blog/blob/blog/source/img/readme-img/readme3.png)
+### 文章
+
+[javascript 面向对象设计系列](https://kuangpf.github.io/blog/2018/03/02/javascript-object-oriented/)
+* [面向对象版块之理解对象](https://kuangpf.github.io/blog/2018/03/02/javascript-understand-object/)
+* [面向对象版块之对象属性](https://kuangpf.github.io/blog/2018/03/02/javascript-object-properties/)
+* [面向对象版块之定义多个对象属性以及读取属性特性](https://kuangpf.github.io/blog/2018/03/02/javascript-object-properties-more/)
+* [面向对象版块之创建对象](https://kuangpf.github.io/blog/2018/03/06/javascript-object-create/)
 
 ### 前言
 当你接触到更多的技术，更加优雅的代码写法，更加有趣的代码demo。你总会有个想法，将他记录下来，告诉自己以后来看(其实都懂，再也不会来看:innocent::innocent:)，然后我们骗了自己一次又一次。其实可以写成博客，从而不骗自己，至少在写博客的时候没有骗自己。
