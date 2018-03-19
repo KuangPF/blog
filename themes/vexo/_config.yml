@@ -3,16 +3,16 @@ description: bolg
 keyword: vuejs
 favicon: 
 title: KuangPF🖖blog
-logoTitle: vue
+logoTitle: FE
 
 excerpt_link: Read more
 
 menu:
- Home: /
- Tags: /tags/
- Archives: /archives/
- Projects: /project/
- About: /about/
+ 首页: /
+ 标签: /tags/
+ 归档: /archives/
+ 开源项目: /project/
+ 关于: /about/
 
 # highlight
 highlight:
@@ -48,7 +48,7 @@ baidu_id:
 about: 
   banner: http://file.muyutech.com/about.jpg
   avatar: https://avatars2.githubusercontent.com/u/20694238?s=460&v=4
-  description: 人生不只有眼前的苟且，还有诗和远方.
+  description: 其实，敲代码不是爱好，也许...
   # Links
 	segmentfault_username: kuangpengfei
   weibo_username: kuangpf
