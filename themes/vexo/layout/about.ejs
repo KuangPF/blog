@@ -15,23 +15,39 @@
                 </span>
             </a>
             <% } %>
-						<% if (theme.about.segmentfault_username) { %>
+            <% if (theme.about.home_url) { %>
+            <a class="icon-home" href="<%- theme.about.home_url %>" target="_blank">
+                <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-home fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+            <% } %>
+            <% if (theme.about.juejin_url) { %>
+              <a class="icon-juejin" href="https://juejin.im/<%- theme.about.juejin_url %>" target="_blank">
+                  <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-paper-plane-o fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+              <% } %>
+						<!-- <% if (theme.about.segmentfault_username) { %>
             <a class="icon-sf" href="https://segmentfault.com/u/<%- theme.about.segmentfault_username %>" target="_blank">
                 <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-segmentfault fa-stack-1x fa-inverse">sf</i>
                 </span>
             </a>
-            <% } %>
-            <% /* if (theme.about.weibo_username) { %>
+            <% } %> -->
+           <!--  <% if (theme.about.weibo_username) { %>
             <a class="icon-weibo" href="https://weibo.com/<%- theme.about.weibo_username %>" target="_blank">
                 <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
                 </span>
             </a>
-            <% } */ %>
-            <% if (theme.about.facebook_username) { %>
+            <% } %> -->
+            <!-- <% if (theme.about.facebook_username) { %>
             <a class="icon-facebook" href="https://facebook.com/<%- theme.about.facebook_username %>" target="_blank">
                 <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
@@ -46,7 +62,7 @@
                 <i class="fa fa-stack-1x fa-inverse">知</i>
                 </span>
             </a>
-            <% } %>
+            <% } %> -->
             <% if (theme.about.mail_username) { %>
                 <a class="icon-mail" href="https://mail.qq.com/<%- theme.about.mail_username %>" target="_blank">
                     <span class="fa-stack fa-lg">
