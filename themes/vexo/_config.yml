@@ -30,16 +30,6 @@ qrcode: true
 # comment
 # you can set gitment or uyan
 
-
-comment: gitment
-
-# gitment config
-gitment_owner: KuangPF
-gitment_repo: bolg
-gitment_oauth_id: b72ce2d9cb2b8c5175a5
-gitment_oauth_secret: ed963635170152c37f7c7c087049f00d01055b6c
-
-
 # uyan
 # if you want to use uyan as your blog comment, plz remove/comment out gitment config
 

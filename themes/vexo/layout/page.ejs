@@ -128,42 +128,5 @@
       element: document.getElementById('share-qrcode'),
       value: document.location.href
     });
-
-    var gitment = new Gitment({
-        id: '<%= page.title %>', // 可选。默认为 location.href
-        owner: 'KuangPF',
-        repo: 'blog',
-        oauth: {
-            client_id: 'b72ce2d9cb2b8c5175a5',
-            client_secret: 'ed963635170152c37f7c7c087049f00d01055b6c',
-        },
-    })
-    gitment.render('container')
-    // gitment
-    /* var gitmentConfig = "<%= theme['gitment_owner'] %>";
-    if (gitmentConfig !== 'undefined') {
-      var gitment = new Gitment({
-        id: "<%- page.title %>",
-        owner: "<%= theme['gitment_owner'] %>",
-        repo: "<%= theme['gitment_repo'] %>",
-        oauth: {
-          client_id: "<%= theme['gitment_oauth_id'] %>",
-          client_secret: "<%= theme['gitment_oauth_secret'] %>"
-        },
-        theme: {
-          render(state, instance) {
-            const container = document.createElement('div')
-            container.lang = "en-US"
-            container.className = 'gitment-container gitment-root-container'
-            container.appendChild(instance.renderHeader(state, instance))
-            container.appendChild(instance.renderEditor(state, instance))
-            container.appendChild(instance.renderComments(state, instance))
-            container.appendChild(instance.renderFooter(state, instance))
-            return container;
-          }
-        }
-      })
-      gitment.render(document.getElementById('comments'))
-    } */
   })();
 </script>
