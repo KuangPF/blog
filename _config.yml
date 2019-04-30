@@ -6,10 +6,10 @@
 title: KuangPF🖖blog
 subtitle: blog
 description: 
-author: kuangpengfei
-language: 
+author: KuangPF
+language: zh-CN
 timezone:
-logoTitle: FE-blog
+logoTitle: blog
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
