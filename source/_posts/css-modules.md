@@ -2,6 +2,7 @@
 title: 如何在 create-react-app 中使用 CSS Modules
 summary:
 date: 2018-05-12
+issuesLink: https://github.com/KuangPF/blog/issues/11
 ---
 
 <p align="center" style="text-align: center">
@@ -82,7 +83,7 @@ header.css
   color: red;
 }
 ```
-```tsx
+```ts
 import React, { Component } from 'react'
 import headerStyle from './header.module.css'
 
@@ -150,8 +151,7 @@ composes 还可以组合外部文件中的样式:
 ``` html
 <div class="composes-demo_active__27azZ composes-demo_base__MLJCB content_bold__vgYTg">active</div>
 ```
-在 create-react-app 中使用 CSS Modules 会频繁的输入 `styles.**`，可以使用 
-[react-css-modules](https://github.com/gajus/react-css-modules)来避免这点，它通过高阶函数的形式来避免重复输入 `styles.**`。
+在 create-react-app 中使用 CSS Modules 会频繁的输入 `styles.**`，可以使用 [react-css-modules](https://github.com/gajus/react-css-modules)来避免这点，它通过高阶函数的形式来避免重复输入 `styles.**`。
 
 总的来说在 create-react-app 中使用 CSS Modules 还是比较容易，如果还没有在项目中尝试的话非常值得去使用 CSS Modules，最后，感谢各位大佬阅读。
 
