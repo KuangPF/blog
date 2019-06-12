@@ -37,3 +37,33 @@ let second
 let first = 1
 let second = 2
 ```
+
+3. 定义函数的两种方式
+* 声明式函数
+``` js
+function Fn() {
+  // ...
+}
+```
+* 匿名表达式
+``` js
+var Fn = function() {
+  // ...
+}
+```
+匿名表达式存变量提升与暂时性死区
+```js
+// 由于 Fn 使用 var 声明，因此发生了变量提升
+Fn() // throw errr: Fn is not a function
+var Fn = function() {
+  // ...
+}
+```
+``` js
+// 使用 let 声明，存在块级作用域，js 引擎在检视代码时会吧 Fn 放在暂时性死区，直到执行到 Fn 变量声明时才会将 Fn 移除暂时性死区
+Fn() // throw error: Cannot access 'Fn' before initialization
+let Fn = function() {
+  // ...
+}
+```
+> 在执行 js 代码之前，js 引擎会有一个预处理阶段，这个阶段会对所有的变量和函数进行处理，此时就有可能出现变量提升和暂时性死区的情况。
