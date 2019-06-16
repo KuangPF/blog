@@ -11,7 +11,7 @@ issuesLink: https://github.com/KuangPF/blog/issues/12
 
 <p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*tmEwK00Tgvo_MW1sWjZn4g.png" alt=""></p>
 
-### 1. 使用 Set
+### 使用 Set
 首先解释下什么是 `Set`
 > `Set` 是 ES6 提供的一种新的数据结构，由于它只会存储唯一的值，因此当你传入数组时，他会删除重复的值。
 
@@ -21,17 +21,18 @@ Okay，我们现在看一下以下代码，分析下发生了什么，它做了�
 
 <p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*f0io_19WfjiN42N2JKIZ0Q.png" alt=""></p>
 
-##### 使用 `Array.from` 将 Set 转化为数组
+#### 使用 `Array.from` 将 Set 转化为数组
 另外，你也可以使用 `Array.from` 将 `Set` 转化为数组
 <p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*MZgefa7Rur-RafdrT8OSpw.png" alt=""></p>
 
-### 2: 使用 filter
+### 使用 filter
+
 为了更好地理解这部分，我们先看下一下两种方法：`indexOf` and `filter`
-##### indexOf
+#### indexOf
 `indexOf` 方法返回它从数组中找到的所提供元素的第一个索引。
 <p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*W1jHsgUou5frNHlbC-jVpw.png" alt=""></p>
 
-##### filter
+#### filter
 
 `filter()` 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素，换句话说，如果元素满足过滤的条件，并且返回 `true`，那么这个元素就会被包含在过滤掉的数组中，如果一个元素不满足过滤条件，那么将不会在过滤掉的数组中。
 
@@ -41,7 +42,7 @@ Okay，我们现在看一下以下代码，分析下发生了什么，它做了�
 以下是控制台输出的日志，数组中重复项，它们的 `indexOf` 与 遍历时的 `index` 的值不相等，对于那些值，它们不会包含在过滤掉的数组中。
 <p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*QCIsNc2xN7SPZc3dYhjReg.png" alt=""></p>
 
-##### 找出重复项
+#### 找出重复项
 我们也可以通过 `filter()` 方法找出数组中重复项，简单的改变下过滤条件既可以实现：
 <p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*QWswjvxzLyhuycOQ8qzohA.png" alt=""></p>
 
