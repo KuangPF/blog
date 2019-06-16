@@ -1,0 +1,13 @@
+<% var tocContent = toc(page.content, {class: 'ilike-toc', list_number: false}) %>
+<h1 class="post-title"><%=page.title%></h1>
+<article class="post markdown-style">
+  <% if(tocContent) { %>
+  <div class="toc-label">目录</div>
+  <% } %>
+  <%- tocContent %>
+  <%-page.content%>
+</article>
+<a href="<%= page.issuesLink %>" class="issues-link" target="_blank">
+  问题讨论区
+</a>
+<%-partial('partials/paginator') %>

@@ -1,0 +1,30 @@
+<div class="container">
+    <%- partial('partials/social', {}) %>
+    <div class="copyright">
+        <span>
+            <% var author = "iLiKE Theme"; if (config.author) { author = config.author %>
+            <% } %>
+            <% if (theme.since) { 
+                var start = theme.since;
+                var end = date(Date.now(),'YYYY'); 
+                var cpTime = end
+                if (start < end) {
+                    cpTime = start + " - " + end;
+                }
+            %>
+                © <%= author%> <%= cpTime%>
+            <% } else { 
+                var end = date(Date.now(),'YYYY');
+            %>
+                © <%= author%> <%= end%>
+            <% } %>
+        </span>
+    </div>
+    <div class="power">
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a> & <a href="https://github.com/CaiChenghan/iLiKE">iLiKE Theme</a>
+        </span>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <%-partial('partials/counter') %>
+</div>

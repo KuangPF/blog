@@ -1,0 +1,31 @@
+<% if (is_home()) { var currentPage = page.current; var totalPage = page.total; var sep = 4 - (totalPage - currentPage) > 0 ? 4 - (totalPage - currentPage) : 0; var startPage = currentPage - 5 - sep >
+1 ? currentPage - 5 - sep : 1; var endPage = startPage + 9 < totalPage ? startPage + 9 : totalPage; var prevLink = currentPage - 1 > 1 ? "/page/" + (currentPage - 1) : "/"; var nextLink = currentPage
++ 1 > 1 ? "/page/" + (currentPage + 1) : "/"; %> <% if(totalPage > 10) { %>
+<div class="pagenator">
+  <% if (currentPage == 0 || currentPage == 1) { %>
+  <a class="extend prev-none"><%= _p('posts.prev')%></a>
+  <% } %> <% if (currentPage > 1) { %>
+  <a class="extend prev" href="<%=prevLink%>"><%= _p('posts.prev')%></a>
+  <% } %> <% for (var i=startPage; i <= endPage; i++) { %> <% if (i == currentPage) { %>
+  <span class="extend page-item page-item-select"><%=i%></span>
+  <% } %> <% if (i != currentPage) { var pageUrl = (i > 1 ? "/page/" + i : "/") %>
+  <a class="extend page-item page-item-normal" href="<%=pageUrl%>"><%=i%></a>
+  <% } %> <% } %> <% if (currentPage == totalPage) { %>
+  <a class="extend next-none"><%= _p('posts.next')%></a>
+  <% } %> <% if (currentPage < totalPage) { %>
+  <a class="extend next" href="<%=nextLink%>"><%= _p('posts.next')%></a>
+  <% } %>
+</div>
+<% } %> <% } else if (is_post()) { %>
+<div class="pagenator post-pagenator">
+  <% if (page.prev) { %>
+  <a class="extend prev post-prev" href="<%=url_for(page.prev.path)%>"><%= _p('posts.prev_post')%></a>
+  <% } %>
+
+  <p><%= _p('posts.last_update')%> <%= date(page.updated,"YYYY-MM-DD")%></p>
+
+  <% if (page.next) { %>
+  <a class="extend next post-next" href="<%=url_for(page.next.path)%>"><%= _p('posts.next_post')%></a>
+  <% } %>
+</div>
+<% } %>

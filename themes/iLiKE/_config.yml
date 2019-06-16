@@ -1,0 +1,54 @@
+
+# html lang
+language: zh-CN
+
+# main menu navigation
+menu:
+  Home: /blog
+  Github: 'https://github.com/KuangPF'
+
+# Social
+social:
+  email:
+  stack-overflow:
+  twitter:
+  facebook:
+  linkedin:
+  google:
+  github: 
+  weibo:
+  douban:
+  zhihu:
+  jianshu: 
+  pocket:
+  tumblr:
+  instagram:
+
+# Miscelaneous
+favicon: /blog/unicorn.svg
+
+# stylesheets loaded in the <head>
+stylesheets:
+- /blog/css/iLiKE.css
+
+# scripts loaded in the end of the body
+scripts:
+- /js/iLiKE.js
+
+# Site creation time
+since:
+
+# Blog auto_excerpt
+auto_excerpt:
+  enable: true
+  length: 150
+
+
+# ===========================================
+# Third Party Services Settings
+# ===========================================
+
+# LeanCloud
+leancloud:
+  app_id: 6E5zTbTljdUbVW2WkXPsXGJk-gzGzoHsz
+  app_key: 0vsyDKfNpeSECAI70J794ugv

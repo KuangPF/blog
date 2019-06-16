@@ -1,0 +1,89 @@
+@import "header"
+@import "footer"
+@import "social"
+@import "pagenator"
+@import "archives"
+@import "list"
+@import "article"
+@import "heighlight"
+
+.container {
+    margin: 25px auto 20px;
+}
+
+/********** 通用控制 **********/
+body, a, p, ul, li, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0
+}
+
+a {
+	color: #333333;
+    text-decoration: none;
+}
+
+p {
+    color: #2f2f2f;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+span {
+	color: #333333;
+	font-size: 14px;
+}
+
+img {
+    width: 100%;
+}
+
+/********** MarkDown **********/
+blockquote {
+    border-left: 0.25em solid #dfe2e5;
+    padding: 20px;
+    color: #b4b4b4;
+    background-color: #f7f7f7;
+    margin: 0 0 6px 0;
+}
+
+blockquote p {
+    font-size: 17px;
+}
+
+/********** 媒体查询 **********/
+
+@media only screen and (min-width:1200px) {
+    .container {
+        width: 930px;
+        min-height: 650px;
+    }
+}
+
+@media only screen and (max-width:1200px) {
+    .container {
+        width: 930px;
+        min-height: 600px;
+    }
+}
+
+@media only screen and (max-width:979px) {
+    .container {
+        width: 710px;
+        min-height: 550px;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .container {
+        width: 85%;
+        min-height: 500px;
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .container {
+        width: 85%;
+        min-height: 450px;
+    }
+}
