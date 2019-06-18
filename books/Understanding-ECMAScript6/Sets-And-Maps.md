@@ -25,7 +25,7 @@ set.clear()
 
 console.log(set.size) // 0
 ```
-
+o
 3. Set 上的 forEach 方法
 Set 上的 forEach 方法会传递一个回调函数，该函数有三个参数：
 * Set 中下个位置的值
@@ -33,3 +33,52 @@ Set 上的 forEach 方法会传递一个回调函数，该函数有三个参数�
 * 目标 Set 本身
 
 > 第二个参数和第一个参数相同的原因是 ES6 制定者本可以将 `Set` 版本的 `forEach` 方法设置为两个参数，但这样的话就与 `Map` 和数组这两个版本的 `forEach` 方法的参数不一致了，因此就想到一个解决办法：将 `Set` 的每一项同时认定为键和值。于是为了让 `Set` 的 `forEach` 方法与 `Map` 和数组的 `forEach` 方法保持一直，该回调函数的前两个参数据相同了。
+
+``` js
+let set = new Set([1,2])
+set.forEach((value, key, ownerSet)=> {
+  console.log(`${value} ${key}`)
+  console.log(ownerSet === set)
+})
+
+1 1
+true
+2 2
+true
+```
+
+3. Map
+
+``` js
+let map = new Map()
+map.set('title', 'Understanding ES6')
+
+console.log(map.get('title'))
+```
+
+``` js
+let map = new Map([['name', 'Nicholas'], ['age', 25]])
+
+console.log(map.has('name')) // true
+console.log(map.get('name')) // "Nicholas"
+console.log(map.has('age')) // true
+console.log(map.get('age')) // 25
+console.log(map.size) // 2
+```
+
+4. Map 上的 forEach 方法
+
+``` js
+let map = new Map([['name', 'Nicholas'], ['age', 25]])
+
+map.forEach((value, key, ownerMap)=> {
+  console.log(`${key} ${value}`)
+  console.log(ownerMap === map)
+})
+
+// result
+"name Nicholas"
+true
+"age 25"
+true
+```
