@@ -6,7 +6,7 @@ var pageHander = {
 }
 
 function createArrowFunctionReturningFirstArgument() {
-  return ()=> arguments[0]
+  return () => arguments[0]
 }
 
 var arrowFunction = createArrowFunctionReturningFirstArgument(5)
