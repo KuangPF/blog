@@ -41,6 +41,7 @@ set.forEach((value, key, ownerSet)=> {
   console.log(ownerSet === set)
 })
 
+// result
 1 1
 true
 2 2
