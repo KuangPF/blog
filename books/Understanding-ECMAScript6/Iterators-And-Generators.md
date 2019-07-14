@@ -132,3 +132,41 @@ for (let key of data.keys()) {
 "format"
 */
 ```
+
+5. 集合类型的默认迭代器
+当集合类型没有显示的指定迭代器时，每种集合的类型都有默认的迭代器，values 是数据和 Set 的默认迭代器，而 entries 是 Map 的默认迭代器。
+
+``` js
+let colors = [ "red", "green", "blue" ];
+let tracking = new Set([1234, 5678, 9012]);
+let data = new Map();
+data.set("title", "Understanding ECMAScript 6");
+data.set("format", "ebook");
+
+// entries
+
+for (let value of colors) {
+  console.log(value)
+}
+
+for (let num of tracking) {
+  console.log(num)
+}
+
+for (let entry of data) {
+  console.log(entry)
+}
+
+// result
+
+/* 
+"red"
+"green"
+"blue"
+1234
+5678
+9012
+["title", "Understanding ECMAScript 6"]
+["format", "print"] 
+*/
+```
