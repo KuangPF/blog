@@ -1,5 +1,5 @@
 ---
-title: TypeScript 中，interface 和 Type 的区别
+title: TypeScript 中，interface 和 type 的区别
 summary:
 date: 2019-07-18
 issuesLink: https://github.com/KuangPF/blog/issues/13
@@ -66,12 +66,12 @@ type ProUser = User & {
   email: string
 }
 
-interface VipUserInterfce {
+interface VipUserInterface {
   readonly vip: boolean
 }
 
 /* type 与 interface 拓展 */
-type VipUserType = VipUserInterfce & {
+type VipUserType = VipUserInterface & {
   member: boolean
 }
 ```
