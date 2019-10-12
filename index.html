@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+  <link rel="shortcut icon" href="/blog/logo.png">
+  <title>🦄 KuangPF’ blog</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/blog/css/iLiKE.css">
+    
+  
+</head></html>
+<body>
+    <div class="header">
+        <div class="container">
+    <div class="menu">
+      <div class="menu-left">
+        <a href="/">
+          <img src="/blog/unicorn.svg" class="no-medium-zoom-image"></img>
+        </a>
+      </div>
+      <div class="menu-right">
+        
+          
+          
+          
+          
+          
+          
+          <a href="/blog">首页</a>
+        
+          
+          
+          
+          
+          
+          <a href="https://github.com/KuangPF">Github</a>
+        
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="container">
+        
+ 
+<div class="article">
+  
+  <div class="article-item">
+    <h2 class="article-item-header">
+      <a href="/blog/2019/10/12/typescript-is-keyword/">
+        TypeScript is 关键字
+      </a>
+    </h2>
+    <div class="article-item-content">
+      
+      <p>TypeScript 中 is 关键字表示是否属于某个类型，可以有效地缩小类型范围。可以看以下例子：
+123const isString = (val: any): val is String =&amp;gt; &amp;#123;  return typeof val === &#39;string&#39;&amp;#125;
+is...</p>
+      
+    </div>
+    <div class="atricle-item-time">
+      
+      <span>
+        2019-10-12
+      </span>
+      
+    </div>
+  </div>
+  
+  <div class="article-item">
+    <h2 class="article-item-header">
+      <a href="/blog/2019/07/18/typescript-interface-type-difference/">
+        TypeScript 中，interface 和 type 的区别
+      </a>
+    </h2>
+    <div class="article-item-content">
+      
+      <p>在 TypeScript 中，interface 和 type 主要用于类型的声明，它们的相同点以及区别如下：
+相同点✅ 都可以描述一个对象或者函数
+123456789/* interface */interface User &amp;#123;  name: string  age: number&amp;#1...</p>
+      
+    </div>
+    <div class="atricle-item-time">
+      
+      <span>
+        2019-07-18
+      </span>
+      
+    </div>
+  </div>
+  
+  <div class="article-item">
+    <h2 class="article-item-header">
+      <a href="/blog/2019/06/10/remove-array-duplicates/">
+        ES6 中如何数组去重
+      </a>
+    </h2>
+    <div class="article-item-content">
+      
+      <p>
+
+有三种方法可以从数组中过滤掉重复项，并且只返回唯一的值，我最喜欢的方式还是使用 Set，因为它最简洁并且最简单😁。
+
+
+使用 Set首先解释下什么是 Set
+
+Set 是 ES6 提供的一种新的数据结构，由于它只会存储唯一的值，因此当你传入数组时，他会删除重复的值。
+
+Okay，我们现在看一下...</p>
+      
+    </div>
+    <div class="atricle-item-time">
+      
+      <span>
+        2019-06-10
+      </span>
+      
+    </div>
+  </div>
+  
+  <div class="article-item">
+    <h2 class="article-item-header">
+      <a href="/blog/2019/05/12/css-modules/">
+        如何在 create-react-app 中使用 CSS Modules
+      </a>
+    </h2>
+    <div class="article-item-content">
+      
+      <p>  
+
+在开始讲解以前，先简单了解下什么是 CSS Modules
+
+A CSS Module is a CSS file in which all class names and animation names are scoped locally by default
+
+简单点说 CSS Mod...</p>
+      
+    </div>
+    <div class="atricle-item-time">
+      
+      <span>
+        2019-05-12
+      </span>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+  
+
+    </div>
+    <script src="https://unpkg.com/medium-zoom@1.0.4/dist/medium-zoom.min.js"></script>
+    <script>
+        let mediumZoomList = [...document.getElementsByTagName('img')].reduce((zoomList,currentItem)=> {
+            return (currentItem.getAttribute('class') || []).indexOf('no-medium-zoom-image') >-1 ? zoomList : [...zoomList, currentItem]
+        },[])
+        mediumZoom(mediumZoomList)
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+  <link rel="shortcut icon" href="/blog/logo.png">
+  <title>TypeScript is 关键字 [ 🦄 KuangPF’ blog ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/blog/css/iLiKE.css">
+    
+  
+</head></html>
+<body>
+    <div class="header">
+        <div class="container">
+    <div class="menu">
+      <div class="menu-left">
+        <a href="/">
+          <img src="/blog/unicorn.svg" class="no-medium-zoom-image"></img>
+        </a>
+      </div>
+      <div class="menu-right">
+        
+          
+          
+          
+          
+          
+          
+          <a href="/blog">首页</a>
+        
+          
+          
+          
+          
+          
+          <a href="https://github.com/KuangPF">Github</a>
+        
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="container">
+        
+<h1 class="post-title">TypeScript is 关键字</h1>
+<article class="post markdown-style">
+  
+  
+  <p>TypeScript 中 <code>is</code> 关键字表示是否属于某个类型，可以有效地缩小类型范围。可以看以下例子：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isString = (val: <span class="built_in">any</span>): val is <span class="built_in">String</span> =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> val === <span class="string">'string'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>isString</code> 是一个判断传入参数是否为 String 类型的函数，用 <code>is String</code> 限定了返回值类型，这里估计有人会有这样的疑问：用 Boolean 类型也可以限制函数的返回类型。Boolean 的确可以限制 <code>isString</code> 函数的返回类型，但是用 <code>is String</code> 可以更好地缩小类型范围，避免一些隐藏的错误。</p>
+<p>当用 <code>Boolean</code> 来限制 <code>isString()</code> 函数返回类型，以下代码会不会有编译错误，但会有运行错误，因为 <code>toExponential()</code> 是 Number 类型的一个方法，在 String 类型上不存在。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params">val:<span class="built_in">any</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isString(val)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(val.length)</span><br><span class="line">    <span class="built_in">console</span>.log(val.toExponential(<span class="number">2</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">example(<span class="string">'test'</span>) <span class="comment">// Uncaught TypeError: val.toExponential is not a function</span></span><br></pre></td></tr></table></figure>
+<p>另外，如果将 <code>val.toExponential(2)</code> 放在 <code>isString</code> 外面，也会是编译时不会出现错误，运行时会报错误：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params">val:<span class="built_in">any</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isString(val)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(val.length)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(val.toExponential(<span class="number">2</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">example(<span class="string">'test'</span>) <span class="comment">// Uncaught TypeError: val.toExponential is not a function</span></span><br></pre></td></tr></table></figure>
+<p>但如果用 <code>is String</code> 来限定 <code>isString()</code> 函数返回值类型，此时会直接报编译错误，当然运行时肯定也会抛出错误：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params">val:<span class="built_in">any</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isString(val)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(val.length)</span><br><span class="line">    <span class="built_in">console</span>.log(val.toExponential(<span class="number">2</span>)) <span class="comment">// Property 'toExponential' does not exist on type 'String'.</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据上面的例子，就会理解 TypeScript 中 <code>is</code> 关键字可以缩小类型范围，可以帮助开发者在编辑阶段发现错误，从而避免一些隐藏的运行时错误，其实这就是 TypeScript 的优势所在。</p>
+<p>参考文章：<br><a href="https://stackoverflow.com/questions/40081332/what-does-the-is-keyword-do-in-typescript" target="_blank" rel="noopener">what-does-the-is-keyword-do-in-typescript</a></p>
+
+</article>
+<a href="https://github.com/KuangPF/blog/issues/14" class="issues-link" target="_blank">
+  问题讨论区
+</a>
+
+<div class="pagenator post-pagenator">
+  
+
+  <p>上次更新 2019-10-12</p>
+
+  
+  <a class="extend next post-next" href="/blog/2019/07/18/typescript-interface-type-difference/">下一篇</a>
+  
+</div>
+
+
+    </div>
+    <script src="https://unpkg.com/medium-zoom@1.0.4/dist/medium-zoom.min.js"></script>
+    <script>
+        let mediumZoomList = [...document.getElementsByTagName('img')].reduce((zoomList,currentItem)=> {
+            return (currentItem.getAttribute('class') || []).indexOf('no-medium-zoom-image') >-1 ? zoomList : [...zoomList, currentItem]
+        },[])
+        mediumZoom(mediumZoomList)
+    </script>
+</body>
+</html>

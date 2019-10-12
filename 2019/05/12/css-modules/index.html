@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+  <link rel="shortcut icon" href="/blog/logo.png">
+  <title>如何在 create-react-app 中使用 CSS Modules [ 🦄 KuangPF’ blog ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/blog/css/iLiKE.css">
+    
+  
+</head></html>
+<body>
+    <div class="header">
+        <div class="container">
+    <div class="menu">
+      <div class="menu-left">
+        <a href="/">
+          <img src="/blog/unicorn.svg" class="no-medium-zoom-image"></img>
+        </a>
+      </div>
+      <div class="menu-right">
+        
+          
+          
+          
+          
+          
+          
+          <a href="/blog">首页</a>
+        
+          
+          
+          
+          
+          
+          <a href="https://github.com/KuangPF">Github</a>
+        
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="container">
+        
+<h1 class="post-title">如何在 create-react-app 中使用 CSS Modules</h1>
+<article class="post markdown-style">
+  
+  
+  <p align="center" style="text-align: center"><br>  <img width="150px" style="width:150px" src="https://raw.githubusercontent.com/css-modules/logos/master/css-modules-logo.png" alt="react-knowledge react"><br></p>
+
+<p>在开始讲解以前，先简单了解下什么是 <a href="https://github.com/css-modules/css-modules" target="_blank" rel="noopener">CSS Modules</a></p>
+<blockquote>
+<p>A <strong>CSS Module</strong> is a CSS file in which all class names and animation names are scoped locally by default</p>
+</blockquote>
+<p>简单点说 CSS Module 是具有局部作用域的 css 文件。既然提到了局部作用域，那么肯定有全局作用域，在 create-react-app 中，我们引入 css 文件通常为以下形式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* index.css */</span></span><br><span class="line"><span class="selector-class">.color</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* index.tsx */</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./index.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> Index <span class="keyword">extends</span> Component &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种引入方法就会出现全局污染的问题，CSS 使用全局选择器机制来设置样式，优点是方便重写样式，缺点是所有的样式都是全局生效，样式可能被错误覆盖。假定一个页面有以下两个组件：</p>
+<ul>
+<li><code>&lt;Header /&gt;</code>，内容如下：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./header.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> Index <span class="keyword">extends</span> Component &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;div className=<span class="string">"color"</span>&gt;Header color&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>header.css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.color</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>&lt;Content /&gt;</code>, 内容如下：</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./content.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> Index <span class="keyword">extends</span> Component &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;div className=<span class="string">"color"</span>&gt;Content color&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>header.css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.color</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们期待在页面上 Header color 的字的颜色为 red，Content color 为 green，但实际上是两个都为 green，这就是因为我们直接引入 header.css 和 content.css 后，样式拥有全局作用域，而相同的样式又可能出现错误地覆盖，因此就出现了上面的情况。</p>
+<p>避免这种情况在 create-react-app 的方法就是使用 CSS Modules，使用<a href="https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet" target="_blank" rel="noopener">方法</a>就是将对应的 css 文件名称命名为 <code>[name].module.css</code> 的形式（使用 less 或者 sass 类似），以 <code>Header</code> 组件为例，修改如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* header.module.css */</span></span><br><span class="line"><span class="selector-class">.color</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> headerStyle <span class="keyword">from</span> <span class="string">'./header.module.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> Index <span class="keyword">extends</span> Component &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;div className=&#123;headerStyle.color&#125;&gt;Header color&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这样 Header color 的颜色就会为 red。</p>
+<p>它的实现过程就是利用 Webpack 的 <code>css-loader</code> 生成（基本）唯一的 class 名称，在 create-react-app 中会以 [filename]_[classname]__[hash] 的命名规则来生成 class 名称，例如 <code>Header</code> 组件生成后的 html 如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header_color__2Oqjl"</span>&gt;</span>Header color<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用了 CSS Modules 后，就相当于给每个 class 名外加加了一个 <code>:local</code>，以此来实现样式的局部化，如果你想切换到全局模式，使用对应的 <code>:global</code>。<code>:local</code> 与 <code>:global</code> 的区别是 CSS Modules 只会对 <code>:local</code> 块的 class 样式做规则处理，<code>:global</code> 的样式编译后不变。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.color</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 以上与下面等价 */</span></span><br><span class="line"><span class="selector-pseudo">:local(.color)</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义全局样式 */</span></span><br><span class="line"><span class="selector-pseudo">:global(.global-bg)</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在开发中会遇到样式的复用问题，CSS Modules 只提供了唯一的方式来处理：<code>composes</code> 组合:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 基础样式 */</span></span><br><span class="line"><span class="selector-class">.base</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#82D7F7</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.active</span> &#123;</span><br><span class="line">  <span class="attribute">composes</span>: base;</span><br><span class="line">  <span class="comment">/* active 其他样式 */</span></span><br><span class="line">  <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 active 中 composes base，编译后会 active 会变成两个 class<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"composes-demo_active__27azZ composes-demo_base__MLJCB"</span>&gt;</span>active<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>composes 还可以组合外部文件中的样式:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.active</span> &#123;</span><br><span class="line">  <span class="attribute">composes</span>: base;</span><br><span class="line">  <span class="attribute">composes</span>: bold from <span class="string">'./content.module.css'</span>;</span><br><span class="line">  <span class="comment">/* active 其他样式 */</span></span><br><span class="line">  <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后会变成三个 class<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"composes-demo_active__27azZ composes-demo_base__MLJCB content_bold__vgYTg"</span>&gt;</span>active<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在 create-react-app 中使用 CSS Modules 会频繁的输入 <code>styles.**</code>，可以使用 <a href="https://github.com/gajus/react-css-modules" target="_blank" rel="noopener">react-css-modules</a>来避免这点，它通过高阶函数的形式来避免重复输入 <code>styles.**</code>。</p>
+<p>总的来说在 create-react-app 中使用 CSS Modules 还是比较容易，如果还没有在项目中尝试的话非常值得去使用 CSS Modules，最后，感谢各位大佬阅读。</p>
+<p><strong>参考文档</strong></p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/20495964" target="_blank" rel="noopener">CSS Modules 详解及 React 中实践</a></li>
+<li><a href="https://blog.bitsrc.io/how-to-use-sass-and-css-modules-with-create-react-app-83fa8b805e5e" target="_blank" rel="noopener">How to use Sass and CSS Modules with create-react-app</a></li>
+<li><a href="https://css-tricks.com/css-modules-part-1-need/" target="_blank" rel="noopener">What are CSS Modules and why do we need them?</a></li>
+</ul>
+
+</article>
+<a href="https://github.com/KuangPF/blog/issues/11" class="issues-link" target="_blank">
+  问题讨论区
+</a>
+
+<div class="pagenator post-pagenator">
+  
+  <a class="extend prev post-prev" href="/blog/2019/06/10/remove-array-duplicates/">上一篇</a>
+  
+
+  <p>上次更新 2019-10-11</p>
+
+  
+</div>
+
+
+    </div>
+    <script src="https://unpkg.com/medium-zoom@1.0.4/dist/medium-zoom.min.js"></script>
+    <script>
+        let mediumZoomList = [...document.getElementsByTagName('img')].reduce((zoomList,currentItem)=> {
+            return (currentItem.getAttribute('class') || []).indexOf('no-medium-zoom-image') >-1 ? zoomList : [...zoomList, currentItem]
+        },[])
+        mediumZoom(mediumZoomList)
+    </script>
+</body>
+</html>

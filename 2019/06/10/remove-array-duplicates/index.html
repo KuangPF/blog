@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+  <link rel="shortcut icon" href="/blog/logo.png">
+  <title>ES6 中如何数组去重 [ 🦄 KuangPF’ blog ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/blog/css/iLiKE.css">
+    
+  
+</head></html>
+<body>
+    <div class="header">
+        <div class="container">
+    <div class="menu">
+      <div class="menu-left">
+        <a href="/">
+          <img src="/blog/unicorn.svg" class="no-medium-zoom-image"></img>
+        </a>
+      </div>
+      <div class="menu-right">
+        
+          
+          
+          
+          
+          
+          
+          <a href="/blog">首页</a>
+        
+          
+          
+          
+          
+          
+          <a href="https://github.com/KuangPF">Github</a>
+        
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="container">
+        
+<h1 class="post-title">ES6 中如何数组去重</h1>
+<article class="post markdown-style">
+  
+  <div class="toc-label">目录</div>
+  
+  <ol class="ilike-toc"><li class="ilike-toc-item ilike-toc-level-3"><a class="ilike-toc-link" href="#使用-Set"><span class="ilike-toc-text">使用 Set</span></a><ol class="ilike-toc-child"><li class="ilike-toc-item ilike-toc-level-4"><a class="ilike-toc-link" href="#使用-Array-from-将-Set-转化为数组"><span class="ilike-toc-text">使用 Array.from 将 Set 转化为数组</span></a></li></ol></li><li class="ilike-toc-item ilike-toc-level-3"><a class="ilike-toc-link" href="#使用-filter"><span class="ilike-toc-text">使用 filter</span></a><ol class="ilike-toc-child"><li class="ilike-toc-item ilike-toc-level-4"><a class="ilike-toc-link" href="#indexOf"><span class="ilike-toc-text">indexOf</span></a></li><li class="ilike-toc-item ilike-toc-level-4"><a class="ilike-toc-link" href="#filter"><span class="ilike-toc-text">filter</span></a></li><li class="ilike-toc-item ilike-toc-level-4"><a class="ilike-toc-link" href="#找出重复项"><span class="ilike-toc-text">找出重复项</span></a></li></ol></li><li class="ilike-toc-item ilike-toc-level-3"><a class="ilike-toc-link" href="#使用-reduce"><span class="ilike-toc-text">使用 reduce</span></a></li><li class="ilike-toc-item ilike-toc-level-3"><a class="ilike-toc-link" href="#参考"><span class="ilike-toc-text">参考</span></a></li></ol>
+  <p align="center" style="text-align: center"><img width="450px" style="width:450px" src="https://cdn-images-1.medium.com/max/800/1*Z1SU1atGbGMgY_jHaDyMGA.png" alt></p>
+
+<p>有三种方法可以从数组中过滤掉重复项，并且只返回唯一的值，我最喜欢的方式还是使用 <code>Set</code>，因为它最简洁并且最简单😁。</p>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*tmEwK00Tgvo_MW1sWjZn4g.png" alt></p>
+
+<h3 id="使用-Set"><a href="#使用-Set" class="headerlink" title="使用 Set"></a>使用 Set</h3><p>首先解释下什么是 <code>Set</code></p>
+<blockquote>
+<p><code>Set</code> 是 ES6 提供的一种新的数据结构，由于它只会存储唯一的值，因此当你传入数组时，他会删除重复的值。</p>
+</blockquote>
+<p>Okay，我们现在看一下以下代码，分析下发生了什么，它做了两件事情：</p>
+<ol>
+<li>首先，我们创建一个 <code>Set</code> 数据结构，并传入一个数组，由于 <code>Set</code> 只会存在唯一的值，因此所有重复的值将会被删除</li>
+<li>当删除重复的值后，通过扩展运算符 <code>...</code> 将 <code>Set</code> 数据结构转化为数组</li>
+</ol>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*f0io_19WfjiN42N2JKIZ0Q.png" alt></p>
+
+<h4 id="使用-Array-from-将-Set-转化为数组"><a href="#使用-Array-from-将-Set-转化为数组" class="headerlink" title="使用 Array.from 将 Set 转化为数组"></a>使用 <code>Array.from</code> 将 Set 转化为数组</h4><p>另外，你也可以使用 <code>Array.from</code> 将 <code>Set</code> 转化为数组</p>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*MZgefa7Rur-RafdrT8OSpw.png" alt></p>
+
+<h3 id="使用-filter"><a href="#使用-filter" class="headerlink" title="使用 filter"></a>使用 filter</h3><p>为了更好地理解这部分，我们先看下一下两种方法：<code>indexOf</code> and <code>filter</code></p>
+<h4 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h4><p><code>indexOf</code> 方法返回它从数组中找到的所提供元素的第一个索引。</p>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*W1jHsgUou5frNHlbC-jVpw.png" alt></p>
+
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><p><code>filter()</code> 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素，换句话说，如果元素满足过滤的条件，并且返回 <code>true</code>，那么这个元素就会被包含在过滤掉的数组中，如果一个元素不满足过滤条件，那么将不会在过滤掉的数组中。</p>
+<p>下面我们看下使用 <code>filter</code> 遍历数组会发生什么。</p>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*gwrwc11agEuXo-CQ4mObxg.png" alt></p>
+
+<p>以下是控制台输出的日志，数组中重复项，它们的 <code>indexOf</code> 与 遍历时的 <code>index</code> 的值不相等，对于那些值，它们不会包含在过滤掉的数组中。</p>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*QCIsNc2xN7SPZc3dYhjReg.png" alt></p>
+
+<h4 id="找出重复项"><a href="#找出重复项" class="headerlink" title="找出重复项"></a>找出重复项</h4><p>我们也可以通过 <code>filter()</code> 方法找出数组中重复项，简单的改变下过滤条件既可以实现：</p>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*QWswjvxzLyhuycOQ8qzohA.png" alt></p>
+
+<p>同样，如果我们调试上面的代码可以看到如下输出：</p>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*SqNQiboZ6Tk7M2GB_n_T5A.png" alt></p>
+
+
+<h3 id="使用-reduce"><a href="#使用-reduce" class="headerlink" title="使用 reduce"></a>使用 reduce</h3><p><code>reduce()</code> 方法对数组中的每个元素执行一个由您提供的 <code>reducer</code> 函数(升序执行)，将其结果汇总为单个返回值。<br>在这种情况下，我们可以让 <code>reducer</code> 函数检测下最终数组中是否包含 <code>reduce</code> 回调中的当前值，如果不包含，则将该值添加到最终数组中，否则就忽略掉该元素，返回最终数组。<br><code>Reduce</code> 函数稍微有点难以理解，下面通过例子来调试下，看下输出：</p>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*g_TJT20Qtgwn_U-H42CBlA.png" alt></p>
+
+<p>下面是控制台的输出：</p>
+<p align="center" style="text-align: center"><img width="650px" style="width:650px" src="https://cdn-images-1.medium.com/max/1600/1*xxIRrX8Q8st2-uVOe5-T3A.png" alt></p>
+
+
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank" rel="noopener">MDN Web Docs — Set</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank" rel="noopener">MDN Web Docs — Filter</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank" rel="noopener">MDN Web Docs — Reduce</a><br><a href="https://gist.github.com/telekosmos/3b62a31a5c43f40849bb" target="_blank" rel="noopener">GitHubGist: Remove duplicates from JS array</a><br><a href="https://codehandbook.org/how-to-remove-duplicates-from-javascript-array/" target="_blank" rel="noopener">CodeHandbook: How to Remove Duplicates from JavaScript Array</a></p>
+<p>文章来源：翻译 <a href="https://medium.com/dailyjs/how-to-remove-array-duplicates-in-es6-5daa8789641c" target="_blank" rel="noopener">How to Remove Array Duplicates in ES6</a></p>
+
+</article>
+<a href="https://github.com/KuangPF/blog/issues/12" class="issues-link" target="_blank">
+  问题讨论区
+</a>
+
+<div class="pagenator post-pagenator">
+  
+  <a class="extend prev post-prev" href="/blog/2019/07/18/typescript-interface-type-difference/">上一篇</a>
+  
+
+  <p>上次更新 2019-10-11</p>
+
+  
+  <a class="extend next post-next" href="/blog/2019/05/12/css-modules/">下一篇</a>
+  
+</div>
+
+
+    </div>
+    <script src="https://unpkg.com/medium-zoom@1.0.4/dist/medium-zoom.min.js"></script>
+    <script>
+        let mediumZoomList = [...document.getElementsByTagName('img')].reduce((zoomList,currentItem)=> {
+            return (currentItem.getAttribute('class') || []).indexOf('no-medium-zoom-image') >-1 ? zoomList : [...zoomList, currentItem]
+        },[])
+        mediumZoom(mediumZoomList)
+    </script>
+</body>
+</html>

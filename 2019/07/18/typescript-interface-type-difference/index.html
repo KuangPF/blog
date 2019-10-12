@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+  <link rel="shortcut icon" href="/blog/logo.png">
+  <title>TypeScript 中，interface 和 type 的区别 [ 🦄 KuangPF’ blog ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/blog/css/iLiKE.css">
+    
+  
+</head></html>
+<body>
+    <div class="header">
+        <div class="container">
+    <div class="menu">
+      <div class="menu-left">
+        <a href="/">
+          <img src="/blog/unicorn.svg" class="no-medium-zoom-image"></img>
+        </a>
+      </div>
+      <div class="menu-right">
+        
+          
+          
+          
+          
+          
+          
+          <a href="/blog">首页</a>
+        
+          
+          
+          
+          
+          
+          <a href="https://github.com/KuangPF">Github</a>
+        
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="container">
+        
+<h1 class="post-title">TypeScript 中，interface 和 type 的区别</h1>
+<article class="post markdown-style">
+  
+  <div class="toc-label">目录</div>
+  
+  <ol class="ilike-toc"><li class="ilike-toc-item ilike-toc-level-3"><a class="ilike-toc-link" href="#相同点"><span class="ilike-toc-text">相同点</span></a></li><li class="ilike-toc-item ilike-toc-level-3"><a class="ilike-toc-link" href="#区别"><span class="ilike-toc-text">区别</span></a></li></ol>
+  <p>在 <code>TypeScript</code> 中，<code>interface</code> 和 <code>type</code> 主要用于类型的声明，它们的相同点以及区别如下：</p>
+<h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p>✅ 都可以描述一个对象或者函数</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* interface */</span></span><br><span class="line"><span class="keyword">interface</span> User &#123;</span><br><span class="line">  name: <span class="built_in">string</span></span><br><span class="line">  age: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> SetUser &#123;</span><br><span class="line">  (name: <span class="built_in">string</span>, age: <span class="built_in">number</span>): <span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* type */</span></span><br><span class="line"><span class="keyword">type</span> User = &#123;</span><br><span class="line">  name: <span class="built_in">string</span></span><br><span class="line">  age: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> SetUser = &#123;</span><br><span class="line">  (name: <span class="built_in">string</span>, age: <span class="built_in">number</span>): <span class="built_in">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>✅ 都可以进行拓展</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> User &#123;</span><br><span class="line">  name: <span class="built_in">string</span></span><br><span class="line">  age: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> VipUserType = &#123;</span><br><span class="line">  readonly vip: <span class="built_in">boolean</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> ProUser <span class="keyword">extends</span> User &#123;</span><br><span class="line">  email: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* interface 和 type 拓展*/</span></span><br><span class="line"><span class="keyword">interface</span> VipUserInterfce <span class="keyword">extends</span> VipUserType &#123;</span><br><span class="line">  member: <span class="built_in">boolean</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User = &#123;</span><br><span class="line">  name: <span class="built_in">string</span></span><br><span class="line">  age: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ProUser = User &amp; &#123;</span><br><span class="line">  email: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> VipUserInterface &#123;</span><br><span class="line">  readonly vip: <span class="built_in">boolean</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* type 与 interface 拓展 */</span></span><br><span class="line"><span class="keyword">type</span> VipUserType = VipUserInterface &amp; &#123;</span><br><span class="line">  member: <span class="built_in">boolean</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>⚠️<code>type</code> 可以声明基本类型别名，联合类型，元组类型，而 <code>interface</code> 不可以</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 基本类型 */</span></span><br><span class="line"><span class="keyword">type</span> Name = <span class="built_in">string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 联合类型 */</span></span><br><span class="line"><span class="keyword">interface</span> Dog &#123;&#125;</span><br><span class="line"><span class="keyword">interface</span> Cat &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Pet = Dog | Cat</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 元组类型 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PetList = [Dog, Cat]</span><br></pre></td></tr></table></figure>
+<p>⚠️<code>interface</code> 可以进行类型合并，而 <code>type</code> 不可以</p>
+<p><a href="https://www.typescriptlang.org/docs/handbook/declaration-merging.html" target="_blank" rel="noopener">关于 declaration-merging</a><br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Cloner &#123;</span><br><span class="line">  clone(animal: Animal): Animal</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Cloner &#123;</span><br><span class="line">  clone(animal: Sheep): Sheep</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Cloner &#123;</span><br><span class="line">  clone(animal: Dog): Dog</span><br><span class="line">  clone(animal: Cat): Cat</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以上三个 interface 会被合并成一个声明</span></span><br><span class="line"><span class="keyword">interface</span> Cloner &#123;</span><br><span class="line">  clone(animal: Dog): Dog</span><br><span class="line">  clone(animal: Cat): Cat</span><br><span class="line">  clone(animal: Sheep): Sheep</span><br><span class="line">  clone(animal: Animal): Animal</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+</article>
+<a href="https://github.com/KuangPF/blog/issues/13" class="issues-link" target="_blank">
+  问题讨论区
+</a>
+
+<div class="pagenator post-pagenator">
+  
+  <a class="extend prev post-prev" href="/blog/2019/10/12/typescript-is-keyword/">上一篇</a>
+  
+
+  <p>上次更新 2019-10-11</p>
+
+  
+  <a class="extend next post-next" href="/blog/2019/06/10/remove-array-duplicates/">下一篇</a>
+  
+</div>
+
+
+    </div>
+    <script src="https://unpkg.com/medium-zoom@1.0.4/dist/medium-zoom.min.js"></script>
+    <script>
+        let mediumZoomList = [...document.getElementsByTagName('img')].reduce((zoomList,currentItem)=> {
+            return (currentItem.getAttribute('class') || []).indexOf('no-medium-zoom-image') >-1 ? zoomList : [...zoomList, currentItem]
+        },[])
+        mediumZoom(mediumZoomList)
+    </script>
+</body>
+</html>
