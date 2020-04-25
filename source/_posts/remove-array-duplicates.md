@@ -3,6 +3,7 @@ title: ES6 中如何数组去重
 summary:
 date: 2019-06-10
 issuesLink: https://github.com/KuangPF/blog/issues/12
+order: 1
 ---
 
 <p align="center" style="text-align: center"><img width="450px" style="width:450px" src="https://cdn-images-1.medium.com/max/800/1*Z1SU1atGbGMgY_jHaDyMGA.png" alt=""></p>
