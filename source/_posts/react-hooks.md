@@ -2,7 +2,7 @@
 title: React Hooks 讲解
 summary: Ract Hooks 基本语法介绍 && 简单 demo 展示
 date: 2020-04-25
-issuesLink: https://github.com/KuangPF/blog/issues/11
+issuesLink: https://github.com/KuangPF/blog/issues/16
 order: 5
 ---
 ## 前言
@@ -60,5 +60,27 @@ useEffect(() => {
 }, [])
 ```
 当传入一个 `[]` 时，表示 `useEffect` 只会执行一次，类似于 `componentDidMount`，但两者并不完全相等。[demo](https://kuangpf.com/react-hooks-demo/#/basic/useEffect)
+
+
+### useContext
+
+`useContext` 是为了在 function 组件中使用类组件的 [context](https://reactjs.org/docs/context.html) API，使用方法很简单，首先创建一个 context：
+``` ts
+const local = '🇨🇳'
+const ThemeContext = React.createContext(local)
+```
+然后在 `useContext` hook 使用 context
+
+``` ts
+function UseContextDemo() {
+  const local = useContext(ThemeContext)
+  return (
+    <div>
+      <p>local: {local}</p>
+    </div>
+  )
+}
+// render: 🇨🇳
+```
 
 ## Additional Hooks
