@@ -290,3 +290,225 @@ function UseCallbackDemo() {
 }
 ```
 该例子中，当改变 count 后，然后改变浏览器窗口大小，可以获取到最新的 count 。如果传入的依赖为 []，handleResize 不会更新，则改变浏览器窗口时， count 的值始终为 0 。
+
+### useMemo
+
+useMemo 对值进行了缓存，与 useCallback 类似，接收一个创建值的函数和一个依赖数组，它仅会在某个依赖项改变时才重新计算 memoized 值，这种优化有助于避免在每次渲染时都进行高开销的计算。
+
+```ts
+function UseMemoDemo() {
+  const [count, setCount] = useState(0)
+  const [value, setValue] = useState('')
+
+  const useMemoChild = useMemo(() => <Child count={count} />, [count])
+  return (
+    <div>
+      <p>{count}</p>
+      <button
+        onClick={() => {
+          setCount(count + 1)
+        }}
+      >
+        click
+      </button>
+      <br />
+      <input value={value} onChange={e => setValue(e.target.value)} />
+      {useMemoChild}
+    </div>
+  )
+}
+
+function Child({ count }: { count: number }) {
+  console.log('child render')
+  return (
+    <Fragment>
+      <p>useMemo hooks</p>
+      <p>child count: {count}</p>
+    </Fragment>
+  )
+}
+```
+
+该例子中，UseMemoDemo 组件引用了 Child 组件，在 UseMemoDemo 组件中，定义了 `count` 和 `value` 两个 state，如果不使用 useMemo，那么每当 UseMemoDemo 中 input 发生改变时，Child 组件就会重新渲染。但 Child 组件 UI 只和 `count` 有关，那么这样就会造成 Child 组件无效更新，因此就引入了 useMemo，将 `count` 作为依赖传入，这样只有当 `count` 值发生改变时， Child 组件才会重新渲染。
+
+### useRef
+
+useRef 返回一个可变的 ref 对象，其 `.current` 属性被初始化为传入的参数 `（initialValue）`。返回的 ref 对象在组件的整个生命周期内保持不变。在 function 组件中， 使用 useRef 主要可以完成以下两件事：
+
+- 获取 dom 结构或者组件实例
+- 保存变量
+
+先看一个获取 dom 节点, 点击 button 时，input 聚焦。
+
+```ts
+function UseRefDemo() {
+  const inputRef = useRef(null as any)
+
+  const handleFocusInput = () => {
+    inputRef.current.focus()
+  }
+
+  return (
+    <div>
+      <input ref={inputRef} />
+      <button onClick={handleFocusInput}>click focus</button>
+    </div>
+  )
+}
+```
+
+然后看一个 react hook 官方的一个 [demo](https://codesandbox.io/s/lyx20m1ol?file=/src/index.js)
+
+```ts
+function Counter() {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(`You clicked ${count} times`)
+    }, 3000)
+  })
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+如果我们 3s 点多次点击 button，那么控制台输出的结果会是 0,1,2,3...， 这是由于每次渲染时 `count` 的值都是固定的。但类似的逻辑在 class 组件中表现不一样：
+
+```ts
+componentDidUpdate() {
+  setTimeout(() => {
+    console.log(`You clicked ${this.state.count} times`);
+  }, 3000);
+}
+```
+
+在 class 组件中，我们在 3s 内多次点击 button，最后在控制台输出的结果是最后一次 `count` 更新的值，那么如果使用 useRef 来实现这种效果？
+前面说过 useRef 返回的对象在组件的整个生命周期内保持不变，它与自建一个 `{current: ...}` 对象的唯一区别是，useRef 会在每次渲染时返回同一个 ref 对象，那么我们就可以这样处理：
+
+```ts
+function useRefDemo() {
+  const [count, setCount] = useState(0)
+  const countRef = useRef(count)
+
+  useEffect(() => {
+    countRef.current = count
+    setTimeout(() => {
+      console.log(`You clicked ${countRef.current} times`)
+    }, 2000)
+  }, [count])
+
+  return (
+    <div>
+      <p>count: {count}</p>
+      <button
+        onClick={() => {
+          setCount(count + 1)
+        }}
+      >
+        click
+      </button>
+    </div>
+  )
+}
+```
+每次渲染时，将 `count` 的值赋值给 `countRef.current`，由于 useRef 始终返回的是同一个对象，因此 `countRef.current` 始终是最新的 count 值，这种特性有点类似于 class 组件中的实例字段。
+
+
+### useImperativeHandle
+useImperativeHandle 可以让你在使用 ref 时，自定义暴露给父组件的实例值，在大多数情况下，应当避免使用 ref 这样的命令式代码。useImperativeHandle 应当与 forwardRef 一起使用：
+
+``` ts
+function FancyInput(props, ref) {
+  const inputRef = useRef(null as any)
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus()
+    }
+  }))
+  return <input ref={inputRef} />
+}
+
+const FancyInputRef = forwardRef(FancyInput)
+
+const useImperativeHandleDemo = () => {
+  const inputRef = useRef(null as any)
+
+  useEffect(() => {
+    inputRef.current.focus()
+  })
+
+  return <FancyInputRef ref={inputRef} />
+}
+```
+
+在 useImperativeHandleDemo 中，调用 `inputRef.current.focus()` 让 input 聚焦
+
+### useLayoutEffect
+
+其[函数签名](https://developer.mozilla.org/zh-CN/docs/Glossary/Signature/Function) 与 useEffect 相同，但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染。在浏览器执行绘制之前，useLayoutEffect 内部的更新计划将被同步刷新。
+看一个简单的例子：
+
+``` ts
+const BlinkyRender = () => {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (value === 0) {
+      setValue(10 + Math.random() * 200);
+    }
+  }, [value]);
+
+  return (
+    <div onClick={() => setValue(0)}>value: {value}</div>
+  );
+};
+```
+当我们快速点击时，`value` 会发生随机变化，但 useEffect 是 UI 已经渲染到屏幕上以后才会执行，`value` 会先渲染为 0，然后在渲染成随机数，因此屏幕会出现闪烁。
+![useEffect](https://user-images.githubusercontent.com/20694238/80691645-20392480-8b03-11ea-8a46-39de9ee5529c.gif)
+
+在 useLayoutEffect 中修改 `value` 的值：
+ ``` ts
+useLayoutEffect(() => {
+  if (value === 0) {
+    setValue(10 + Math.random() * 200);
+  }
+}, [value]);
+ ```
+相比使用 useEffect,当点击 div，`value` 更新为 0，此时页面并不会渲染，而是等待 useLayoutEffect 内部状态修改后，才会去更新页面，所以页面不会闪烁。
+![useLayoutEffect](https://user-images.githubusercontent.com/20694238/80691814-58d8fe00-8b03-11ea-962f-7d4a5f417eb8.gif)
+
+
+### useDebugValue
+
+useDebugValue 可用于在 React 开发者工具中显示自定义 hook 的标签,
+
+``` ts
+function useFriendStatus() {
+  const [isOnline] = useState(null)
+  useDebugValue(isOnline ? 'Online' : 'Offline')
+
+  return isOnline
+}
+
+const App = () => {
+  const isOnline = useFriendStatus()
+
+  return <div>{isOnline}</div>
+}
+
+```
+在 React 开发者工具中会显示 "FriendStatus: Offline"
+![useDebugValue](https://user-images.githubusercontent.com/20694238/80696639-3f878000-8b0a-11ea-8e2f-a55fb7c66044.png)
+在某些情况下，格式化值的显示可能是一项开销很大的操作，因此，useDebugValue 接受一个格式化函数作为可选的第二个参数。该函数只有在 Hook 被检查时才会被调用。它接受 debug 值作为参数，并且会返回一个格式化的显示值
+例如，一个返回 Date 值的自定义 Hook 可以通过格式化函数来避免不必要的 `toDateString` 函数调用：
+
+``` ts
+useDebugValue(date, date => date.toDateString());
+```
+
