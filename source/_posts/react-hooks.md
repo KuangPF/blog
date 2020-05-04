@@ -3,7 +3,7 @@ title: React Hooks 讲解
 summary: Ract Hooks 基本语法介绍 && 简单 demo 展示
 date: 2020-04-25
 issuesLink: https://github.com/KuangPF/blog/issues/16
-order: 5
+order: 6
 ---
 ## 前言
 这篇文章主要是对 React Hooks 基本的语法进行简单介绍，以及会用一些简单的 demo 来展示 React Hooks 的奇妙之处，部分代码来源 React 社区，所有代码均可在 [react-hooks-demo](https://github.com/KuangPF/react-hooks-demo) 获取。

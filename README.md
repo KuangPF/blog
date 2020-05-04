@@ -9,4 +9,5 @@
 
 ### React
 * [React Hooks 讲解](https://kuangpf.com/blog/2020/04/25/react-hooks/)
+* [why-react-hooks](https://kuangpf.com/blog/2020/05/04/why-react-hooks/)
 * [如何在 create-react-app 中使用 CSS Modules](https://kuangpf.com/blog/2019/05/12/css-modules/)

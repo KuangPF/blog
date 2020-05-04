@@ -3,7 +3,7 @@ title: Why React Hooks
 summary: Why React Hooks
 date: 2020-05-04
 issuesLink: https://github.com/KuangPF/blog/issues/17
-order: 6
+order: 5
 ---
 React Hooks 是 React 16.8 版本的新增特性，那么为什么会有 Hooks 产生？任何一项新的技术总是为了解决当前开发中的某一些痛点，而不是无故地重复造轮子，下面我们从两个场景来进行一定的讲解，本文中所有代码均可在 [react-hooks-demo](https://github.com/KuangPF/react-hooks-demo) 查看。
 
