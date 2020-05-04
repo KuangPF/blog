@@ -8,4 +8,5 @@
 * [ES6 中如何数组去重](https://kuangpf.com/blog/2019/06/10/remove-array-duplicates/)
 
 ### React
+* [React Hooks 讲解](https://kuangpf.com/blog/2020/04/25/react-hooks/)
 * [如何在 create-react-app 中使用 CSS Modules](https://kuangpf.com/blog/2019/05/12/css-modules/)
